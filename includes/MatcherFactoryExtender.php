@@ -367,13 +367,15 @@ class MatcherFactoryExtender extends MatcherFactory {
 	 */
 	public function calc( Matcher $typeMatcher, $type ) {
 		if ( !$this->varEnabled ) {
-			return parent::calc( $typeMatcher, $type );
+			return $this->mathFunction( $typeMatcher );
 		}
 
-		return parent::calc( new Alternative( [
-			$typeMatcher,
-			new FunctionMatcher( 'var', new CustomPropertyMatcher() ),
-		] ), $type );
+		return $this->mathFunction(
+			new Alternative( [
+				$typeMatcher,
+				new FunctionMatcher( 'var', new CustomPropertyMatcher() ),
+			] )
+		);
 	}
 
 	/**
