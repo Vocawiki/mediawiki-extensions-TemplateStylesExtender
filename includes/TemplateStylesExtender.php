@@ -208,6 +208,7 @@ class TemplateStylesExtender {
 
 			$propertySanitizer->addKnownProperties( [
 				'backdrop-filter' => Quantifier::plus( $filter ),
+				'-webkit-backdrop-filter' => Quantifier::plus( $filter ),
 			] );
 		} catch ( InvalidArgumentException $e ) {
 			// Fail silently
