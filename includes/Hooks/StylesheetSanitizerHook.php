@@ -79,6 +79,8 @@ class StylesheetSanitizerHook implements TemplateStylesStylesheetSanitizerHook {
 			$extended->addCssSizing4( $extender, $factory );
 		}
 
+		$extended->addWebkit( $extender, $factory );
+
 		$propertySanitizer->setKnownProperties( $extender->getKnownProperties() );
 	}
 }

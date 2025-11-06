@@ -550,6 +550,23 @@
 }
 
 /**
+ * WebKit Extensions
+ */
+.ts-webkit-extensions-text-fill-stroke {
+	-webkit-text-fill-color: #ff0000;
+	-webkit-text-stroke-color: #00ff00;
+
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-width: thin;
+	-webkit-text-stroke-width: medium;
+	-webkit-text-stroke-width: thick;
+
+	-webkit-text-stroke: 2px;
+	-webkit-text-stroke: #0000ff;
+	-webkit-text-stroke: 2px #0000ff;
+}
+
+/**
  * Uncategorized
  */
 .item {

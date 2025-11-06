@@ -305,6 +305,29 @@ class TemplateStylesExtender {
 	}
 
 	/**
+	 * Implements widely-supported -webkit- text properties
+	 */
+	public function addWebkit( StylePropertySanitizerExtender $sanitizer, MatcherFactoryExtender $matcherFactory ): void {
+		try {
+			$textStrokeWidth = new Alternative( [
+				$matcherFactory->length(),
+				new KeywordMatcher( [ 'thin', 'medium', 'thick' ] ),
+			] );
+			$sanitizer->addKnownProperties( [
+				'-webkit-text-fill-color' => $matcherFactory->color(),
+				'-webkit-text-stroke-width' => $textStrokeWidth,
+				'-webkit-text-stroke-color' => $matcherFactory->color(),
+				'-webkit-text-stroke' => UnorderedGroup::someOf( [
+					$matcherFactory->color(),
+					$textStrokeWidth,
+				] )
+			] );
+		} catch ( InvalidArgumentException $e ) {
+			// Fail silently
+		}
+	}
+
+	/**
 	 * Loads a config value for a given key from the main config
 	 * Returns null on if an ConfigException was thrown
 	 *
